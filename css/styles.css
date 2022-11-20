@@ -1,0 +1,141 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+}
+
+.menu_hamburguesa {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 5.5%;
+  left: 10%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+.menu_hamburguesa span {
+  display: block;
+  background-color: rgb(69, 38, 117);
+  width: 100%;
+  height: 2px;
+  margin-top: 9px;
+  transition: all 1s;
+  transform-origin: 0px 100%;
+}
+
+.linea1_menu-activa {
+  transform: rotate(45deg) translate(-3.5px, -2px);
+}
+
+.linea2_menu-activa {
+  opacity: 0;
+  margin-left: -40px;
+}
+
+.linea3_menu-activa {
+  transform: rotate(-45deg) translate(-2px, 2px);
+}
+
+body {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100px 1fr 100px;
+  grid-template-areas: "header" "main" "footer";
+}
+body header {
+  grid-area: header;
+  background-color: rgb(158, 77, 211);
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "menu titulo";
+}
+body header .menu_hamburguesa {
+  grid-area: menu;
+}
+body header .titulo {
+  grid-area: titulo;
+}
+body header .titulo h1 {
+  text-align: center;
+  font-size: 2.5rem;
+}
+body header .titulo p {
+  text-align: center;
+  font-weight: bold;
+}
+body main {
+  grid-area: main;
+  background-image: url(../img/fondo_pagina_compu);
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+body footer {
+  grid-area: footer;
+  background-color: rgb(114, 49, 157);
+}
+
+.centrar, .index .tarjeta_prod button, .index .tarjeta_prod .fondo_NombrePrecio .precio, .index .tarjeta_prod .fondo_NombrePrecio h2, .index .tarjeta_prod img, body header .titulo {
+  justify-self: center;
+  align-self: center;
+}
+
+.index {
+  background-color: gray;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.index .tarjeta_prod {
+  background-color: rgb(144, 77, 189);
+  border: 2px solid rgb(225, 221, 221);
+  border-radius: 5px;
+  margin: 10px 15px;
+  padding: 5px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 150px 2fr 1fr;
+  grid-template-areas: "img" "NombrePrecio" "boton";
+  text-align: center;
+}
+.index .tarjeta_prod img {
+  grid-area: img;
+  width: 135px;
+  height: 135px;
+  border: 1px solid rgb(60, 58, 58);
+  border-radius: 5px;
+  margin-top: 5px;
+}
+.index .tarjeta_prod .fondo_NombrePrecio {
+  display: grid;
+  grid-template-rows: 1fr 30px;
+  margin-top: 10px;
+  background-color: rgba(54, 53, 53, 0.359);
+  margin-bottom: 10px;
+  margin-inline: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.index .tarjeta_prod .fondo_NombrePrecio h2 {
+  font-size: 1.2rem;
+  margin-top: 2px;
+}
+.index .tarjeta_prod .fondo_NombrePrecio .precio {
+  font-size: 1rem;
+}
+.index .tarjeta_prod button {
+  border-radius: 10px;
+  margin-inline: 20px;
+  width: 127px;
+  height: 45px;
+  background-color: rgb(203, 131, 143);
+}
+.index .tarjeta_prod button strong {
+  font-size: 1.05rem;
+}
+.index .tarjeta_prod button:active {
+  background-color: rgb(215, 69, 93);
+}
+
+/*# sourceMappingURL=styles.css.map */

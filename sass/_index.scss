@@ -1,0 +1,71 @@
+
+// CLASES COMUNES 
+.centrar{
+    justify-self: center;
+    align-self: center;
+}
+@mixin margin-top ($valor){  
+    margin-top: $valor;
+} 
+
+// FIN CLASES COMUNES
+
+.index{
+    background-color: gray;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    .tarjeta_prod{
+        background-color: rgb(144, 77, 189);
+        border: 2px solid rgb(225, 221, 221);
+        border-radius: 5px;
+        margin: 10px 15px;
+        padding: 5px;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 150px 2fr 1fr;
+        grid-template-areas: "img" "NombrePrecio" "boton";
+        img{
+            grid-area: img;
+            width: 135px;
+            height: 135px;
+            border: 1px solid rgb(60, 58, 58);
+            border-radius: 5px;
+            @include margin-top(5px);
+            @extend .centrar;
+        }
+        .fondo_NombrePrecio{
+            display: grid;
+            grid-template-rows: 1fr 30px;
+            margin-top: 10px;
+            h2{
+                font-size: 1.2rem;
+                @include margin-top(2px);
+                @extend .centrar;
+            }
+            .precio{
+                font-size: 1rem;
+                @extend .centrar;
+            }
+            background-color: rgba(54, 53, 53, 0.359);
+            margin-bottom: 10px;
+            margin-inline: 5px;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+        button{
+            border-radius: 10px;
+            margin-inline: 20px;
+            width:127px;
+            height: 45px;
+            strong{
+                font-size: 1.05rem;
+            }
+            background-color: rgb(203, 131, 143);
+            @extend .centrar;
+            &:active{
+                background-color: rgb(215, 69, 93);
+            }
+        }
+        text-align: center;
+    }
+}
