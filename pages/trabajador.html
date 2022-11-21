@@ -5,16 +5,79 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/styles.css">
+    <script defer src="../js/menu_hamburguesa.js"></script>
+    <script defer src="../js/productos.js"></script>
+    <script defer src="../js/trabajadores.js"></script>
     <title>Document</title>
 </head>
 
 <body>
     <header>
+        <div class="titulo">
+            <h1>Genshin Wiki </h1>
+            <p>Los mejores productos de alta calidad</p>
+        </div>    
+        <div class="menu_hamburguesa">
+            <span class="linea1_menu"></span>
+            <span class="linea2_menu"></span>
+            <span class="linea3_menu"></span>
+        </div>
 
     </header>
     
     <main class="trabajador">
+        <div class="formulario_iniciar-activo">
+            <h2>Inicie Sesion</h2>
+            <form action="get" class="form" autocomplete="on" id="comprobacion_de_usuario">
 
+                <p class="texto_email">Ingrese su correo electronico</p>
+                <label for="campo_email" >
+                    <input type="email" name="campo_email" id="campo_email" placeholder="wikigenshin@email.com" required>
+                </label>
+                
+                <p class="texto_contrasenia">Ingrese su contraseña</p>
+                <label for="campo_contraseña">
+                    <input type="password" name="campo_contrasenia" id="campo_contrasenia" required>
+                </label>
+
+                <input type="submit" value="Ingresar" class="boton">
+                <button class="boton_registrarse">Registrese Aqui</button>
+            </form>
+        </div>
+
+        <div class="fallo_registro-oculto">
+            <img src="../img/Trabajador/cruz_fallo" alt="Usuario no registrado">
+            <h2>Usuario no registrado</h2>
+            <p>Si usted es un trabajador registrese y espere a ser activado, caso contrario, este es una pagina exclusiva para trabajadores</p>
+        </div>
+
+        <div class="formulario_registrarse-oculto">
+            <h2>Registrese</h2>
+            <form action="get" class="form" autocomplete="on" id="registro_de_usuario">
+                <p class="texto_nombre">Ingrese su nombre</p>
+                <label for="campo_nombre">
+                    <input type="text" name="campo_nombre" id="campo_nombre" required>
+                </label>
+                <p class="texto_email">Ingrese su email</p>
+                <label for="campo_email">
+                    <input type="email" name="campo_email" id="campo_email2" placeholder="wikigenshin@email.com" required> 
+                </label>
+                <p class="texto_dni">Ingrese su DNI</p>
+                <label for="campo_dni">
+                    <input type="number" name="campo_dni" id="campo_dni" placeholder="sin puntos ni espacios" required>
+                </label>
+                <p class="texto_contrasenia">Ingrese una contraseña</p>
+                <label for="campo_contraseña">
+                    <input type="password" name="campo_contrasenia" id="campo_contrasenia2" required>
+                </label>
+
+                <input type="submit" value="Enviar" class="boton">
+            </form>
+        </div>
+        <div class="contenido">
+
+        </div>
+        
     </main>
     
     <footer>

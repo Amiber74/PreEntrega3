@@ -1,0 +1,158 @@
+.fondo_form{
+    background-color: rgba(78, 75, 75, 0.549);
+    padding-block: 20px;
+    border-block: 2px black solid;
+}
+.cont_form{
+    margin-top: 10px;
+    width: 250px;
+    height: 30px;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: rgba(153, 99, 203, 0.594);
+    &::placeholder{
+        color:black;
+        font-size: 0.9rem;
+    }
+}
+.text_form{
+    font-size: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.437);
+    align-self: center;
+    padding-block:5px ;
+}
+.boton_form{
+    width: 140px;
+    height: 30px;
+    border-radius:10px;
+    background-color: rgb(185, 72, 185);
+    font-size: 1rem;
+    font-weight: bold;
+    &:active{
+        background-color: rgb(119, 29, 119);
+    }
+}
+
+
+.trabajador{
+    display: grid;
+
+    grid-template-columns: 1fr;
+    grid-template-rows:repeat(3,1fr);
+    grid-template-areas: "." "form" ".";
+    .formulario_iniciar-activo{
+        grid-area: form;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 50px 1fr;
+        h2{
+            text-align: center;
+            font-size: 2rem;
+            align-self: center;
+        }
+        .form{
+            text-align: center;
+            align-self:center;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(5,50px) 20px;
+            grid-template-areas: "texto_email" "email" "texto_contraseña" "contraseña" "boton";
+            .texto_email{
+                grid-area: texto_email;
+                @extend .text_form;
+            }
+            #campo_email{
+                grid-area: email;
+                @extend .cont_form;
+            }
+            .texto_contrasenia{
+                grid-area: texto_contraseña;
+                @extend .text_form;
+            }
+            #campo_contrasenia{
+                grid-area: contraseña;
+                @extend .cont_form;
+            }
+            .boton{
+                grid-area: boton;
+                @extend .centrar;
+                @extend .boton_form;
+            }
+            .boton_registrarse{
+                @extend .boton_form;
+                justify-self:center;
+                font-size: 0.8rem;
+                width: 100px;
+                height: 35px;
+            }
+            @extend .fondo_form;
+        }
+    }
+    .formulario_iniciar{
+        z-index: -1;
+    }
+
+    .fallo_registro{
+        grid-area: form;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 100px 1fr 1fr;
+        grid-template-areas:"img" "titulo" "texto";
+        img{
+            grid-area: img;
+            width: 100px;
+            height: 100%;
+            @extend .centrar;
+        }
+        h2{
+            grid-area: titulo;
+            font-size: 2rem;
+            @extend .centrar;
+        }
+        p{
+            grid-area: texto;
+            font-size: 1.2rem;
+            text-align: center;
+            @extend .centrar;
+        }
+        @extend .fondo_form;
+    }
+    .fallo_registro-oculto{
+        z-index: -1;
+    }
+    .formulario_registrarse{
+        grid-area: form;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 50px 1fr;
+        h2{
+            text-align: center;
+            font-size: 2rem;
+            align-self: center;
+        }
+        .form{
+            display: grid;
+            text-align: center;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(8,50px);
+            p{
+                @extend .text_form;
+                align-self: center;
+            }
+            label{
+                input{
+                @extend .cont_form;
+                }
+            }
+            .boton{
+                @extend .boton_form;
+                @extend .centrar;
+            }
+        }
+        @extend .fondo_form;
+    }
+    .formulario_registrarse-oculto{
+        z-index: -1;
+    }
+    height: 100vh;
+}

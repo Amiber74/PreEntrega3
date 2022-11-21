@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   padding: 0;
   margin: 0;
@@ -77,7 +78,7 @@ body footer {
   background-color: rgb(114, 49, 157);
 }
 
-.centrar, .index .tarjeta_prod button, .index .tarjeta_prod .fondo_NombrePrecio .precio, .index .tarjeta_prod .fondo_NombrePrecio h2, .index .tarjeta_prod img, body header .titulo {
+.centrar, .trabajador .formulario_registrarse .form .boton, .trabajador .fallo_registro p, .trabajador .fallo_registro h2, .trabajador .fallo_registro img, .trabajador .formulario_iniciar-activo .form .boton, .index .tarjeta_prod button, .index .tarjeta_prod .fondo_NombrePrecio .precio, .index .tarjeta_prod .fondo_NombrePrecio h2, .index .tarjeta_prod img, body header .titulo {
   justify-self: center;
   align-self: center;
 }
@@ -136,6 +137,142 @@ body footer {
 }
 .index .tarjeta_prod button:active {
   background-color: rgb(215, 69, 93);
+}
+
+.fondo_form, .trabajador .formulario_registrarse, .trabajador .fallo_registro, .trabajador .formulario_iniciar-activo .form {
+  background-color: rgba(78, 75, 75, 0.549);
+  padding-block: 20px;
+  border-block: 2px black solid;
+}
+
+.cont_form, .trabajador .formulario_registrarse .form label input, .trabajador .formulario_iniciar-activo .form #campo_contrasenia, .trabajador .formulario_iniciar-activo .form #campo_email {
+  margin-top: 10px;
+  width: 250px;
+  height: 30px;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: rgba(153, 99, 203, 0.594);
+}
+.cont_form::placeholder, .trabajador .formulario_registrarse .form label input::placeholder, .trabajador .formulario_iniciar-activo .form #campo_contrasenia::placeholder, .trabajador .formulario_iniciar-activo .form #campo_email::placeholder {
+  color: black;
+  font-size: 0.9rem;
+}
+
+.text_form, .trabajador .formulario_registrarse .form p, .trabajador .formulario_iniciar-activo .form .texto_contrasenia, .trabajador .formulario_iniciar-activo .form .texto_email {
+  font-size: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.437);
+  align-self: center;
+  padding-block: 5px;
+}
+
+.boton_form, .trabajador .formulario_registrarse .form .boton, .trabajador .formulario_iniciar-activo .form .boton_registrarse, .trabajador .formulario_iniciar-activo .form .boton {
+  width: 140px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: rgb(185, 72, 185);
+  font-size: 1rem;
+  font-weight: bold;
+}
+.boton_form:active, .trabajador .formulario_registrarse .form .boton:active, .trabajador .formulario_iniciar-activo .form .boton_registrarse:active, .trabajador .formulario_iniciar-activo .form .boton:active {
+  background-color: rgb(119, 29, 119);
+}
+
+.trabajador {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas: "." "form" ".";
+  height: 100vh;
+}
+.trabajador .formulario_iniciar-activo {
+  grid-area: form;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 50px 1fr;
+}
+.trabajador .formulario_iniciar-activo h2 {
+  text-align: center;
+  font-size: 2rem;
+  align-self: center;
+}
+.trabajador .formulario_iniciar-activo .form {
+  text-align: center;
+  align-self: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(5, 50px) 20px;
+  grid-template-areas: "texto_email" "email" "texto_contraseña" "contraseña" "boton";
+}
+.trabajador .formulario_iniciar-activo .form .texto_email {
+  grid-area: texto_email;
+}
+.trabajador .formulario_iniciar-activo .form #campo_email {
+  grid-area: email;
+}
+.trabajador .formulario_iniciar-activo .form .texto_contrasenia {
+  grid-area: texto_contraseña;
+}
+.trabajador .formulario_iniciar-activo .form #campo_contrasenia {
+  grid-area: contraseña;
+}
+.trabajador .formulario_iniciar-activo .form .boton {
+  grid-area: boton;
+}
+.trabajador .formulario_iniciar-activo .form .boton_registrarse {
+  justify-self: center;
+  font-size: 0.8rem;
+  width: 100px;
+  height: 35px;
+}
+.trabajador .formulario_iniciar {
+  z-index: -1;
+}
+.trabajador .fallo_registro {
+  grid-area: form;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100px 1fr 1fr;
+  grid-template-areas: "img" "titulo" "texto";
+}
+.trabajador .fallo_registro img {
+  grid-area: img;
+  width: 100px;
+  height: 100%;
+}
+.trabajador .fallo_registro h2 {
+  grid-area: titulo;
+  font-size: 2rem;
+}
+.trabajador .fallo_registro p {
+  grid-area: texto;
+  font-size: 1.2rem;
+  text-align: center;
+}
+.trabajador .fallo_registro-oculto {
+  z-index: -1;
+}
+.trabajador .formulario_registrarse {
+  grid-area: form;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 50px 1fr;
+}
+.trabajador .formulario_registrarse h2 {
+  text-align: center;
+  font-size: 2rem;
+  align-self: center;
+}
+.trabajador .formulario_registrarse .form {
+  display: grid;
+  text-align: center;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(8, 50px);
+}
+.trabajador .formulario_registrarse .form p {
+  align-self: center;
+}
+.trabajador .formulario_registrarse-oculto {
+  z-index: -1;
 }
 
 /*# sourceMappingURL=styles.css.map */
