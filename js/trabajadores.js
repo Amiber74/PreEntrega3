@@ -1,12 +1,13 @@
 const Trabajadores =[
     {nombre:"matias", contraseña:"123456789", email:"mati@gmail.com", dni:87654321},
     {nombre:"facundo", contraseña:"987654321", email:"facu@gmail.com", dni:12345678},
+    {nombre:"facundo", contraseña:"123789456", email:"facu@gmail.com", dni:987321654}
 ]
 const dni_contratados=[
     {nombre:"matias", dni:87654321},
-    {nombre:"facundo", dni:12345678},
+    {nombre:"fabricio", dni:44268002},
     {nombre:"franco", dni:13572648},
-    {nombre:"miguel", dni:24681357}
+    {nombre:"fabricio", dni:24681357}
 ]
 
 // Eventos
@@ -21,19 +22,18 @@ let contrasenia1 = form_inicio.querySelector("#campo_contrasenia")
 let boton_IniciarSesion = form_inicio.querySelector(".boton")
 let boton_registrarse = form_inicio.querySelector (".boton_registrarse")
 
-
+//  INICIO DE SESION
 boton_IniciarSesion.addEventListener("click",(e)=>{
     e.preventDefault()
-        Trabajadores.forEach((valor)=>{
-            if(valor.email == email1.value && valor.contraseña == contrasenia1.value){
-                form_inicio.classList.add("formulario_iniciar")
-            }else{
-                form_inicio.classList.add("formulario_iniciar")
-                aviso_fallo.classList.remove("fallo_registro-oculto")
-                aviso_fallo.classList.add("fallo_registro")
-                console.log ("error")
-            }
-        })
+    const bus= Trabajadores.filter((el)=> el.email == email1.value)
+    const b = bus.find((el)=>el.contraseña==contrasenia1.value)
+    if(b){
+        form_inicio.classList.add("formulario_iniciar")
+    }else{
+        form_inicio.classList.add("formulario_iniciar")
+        aviso_fallo.classList.remove("fallo_registro-oculto")
+        aviso_fallo.classList.add("fallo_registro")
+    }
 })
 
 boton_registrarse.addEventListener("click",(e)=>{
@@ -41,4 +41,38 @@ boton_registrarse.addEventListener("click",(e)=>{
     form_inicio.classList.add("formulario_iniciar")
     form_registro.classList.remove("formulario_registrarse-oculto")
     form_registro.classList.add ("formulario_registrarse")
+})
+
+// REGISTRARSE
+
+let boton_registro = form_registro.querySelector(".boton")
+let nombre_registro = form_registro.querySelector("#campo_nombre")
+let email_registro = form_registro.querySelector("#campo_email2")
+let dni_registro = form_registro.querySelector("#campo_dni")
+let contrasenia_registro = form_registro.querySelector("#campo_contrasenia2")
+
+let trabajador_nuevo = function (nombre,contrasenia,email,dni) {
+    this.nombre=nombre,
+    this.contrasenia=contrasenia,
+    this.email=email,
+    this.dni=dni
+}
+boton_registro.addEventListener("click",(e)=>{
+    e.preventDefault()
+    const busqueda = dni_contratados.filter((b)=>b.nombre.includes(nombre_registro.value))
+    const b =busqueda.find((b)=>b.dni === parseInt(dni_registro.value)) 
+    if(b){
+        Trabajadores.push( new trabajador_nuevo (nombre_registro.value,contrasenia_registro.value,email_registro.value,dni_registro.value))
+            form_registro.classList.remove ("formulario_registrarse")
+            form_registro.classList.add("formulario_registrarse-oculto")
+            form_inicio.classList.remove("formulario_iniciar")
+            form_inicio.classList.add("formulario_iniciar-activo")
+            let pos = dni_contratados.indexOf(b)
+            dni_contratados.splice(pos,1)
+    } else{
+        aviso_fallo.classList.remove("fallo_registro-oculto")
+        aviso_fallo.classList.add("fallo_registro")
+        form_registro.classList.remove ("formulario_registrarse")
+        form_registro.classList.add("formulario_registrarse-oculto")
+    }
 })

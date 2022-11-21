@@ -242,6 +242,7 @@ body footer {
 .trabajador .fallo_registro h2 {
   grid-area: titulo;
   font-size: 2rem;
+  text-align: center;
 }
 .trabajador .fallo_registro p {
   grid-area: texto;

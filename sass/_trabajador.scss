@@ -107,6 +107,7 @@
         h2{
             grid-area: titulo;
             font-size: 2rem;
+            text-align: center;
             @extend .centrar;
         }
         p{
