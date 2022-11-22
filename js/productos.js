@@ -10,3 +10,7 @@ const productos = [
     {id: 9,precio:"30.500", nombre:"Auriculares Genshin Impact", imagen:"./img/Productos/auriculares-klee_genshin.jpg", descripcion: "Auriculares inalambricos de alta calidad tematica de tu personaje favorito, Klee!"},
     {id: 10,precio:"19.000", nombre:"Traje de Venti", imagen:"./img/Productos/cosplay-venti_genshin.jpg", descripcion: "Disfrazate de tu arconte favorito, traje de alta calidad para mujeres"},
 ]
+
+//Enviar productos al storage
+
+localStorage.setItem("productos",JSON.stringify(productos))

@@ -1,14 +1,17 @@
-const Trabajadores =[
-    {nombre:"matias", contraseña:"123456789", email:"mati@gmail.com", dni:87654321},
-    {nombre:"facundo", contraseña:"987654321", email:"facu@gmail.com", dni:12345678},
-    {nombre:"facundo", contraseña:"123789456", email:"facu@gmail.com", dni:987321654}
-]
+
 const dni_contratados=[
     {nombre:"matias", dni:87654321},
     {nombre:"fabricio", dni:44268002},
     {nombre:"franco", dni:13572648},
     {nombre:"fabricio", dni:24681357}
+
 ]
+localStorage.setItem("dnis",JSON.stringify(dni_contratados))
+
+
+//Storage
+
+
 
 // Eventos
 
@@ -22,11 +25,32 @@ let contrasenia1 = form_inicio.querySelector("#campo_contrasenia")
 let boton_IniciarSesion = form_inicio.querySelector(".boton")
 let boton_registrarse = form_inicio.querySelector (".boton_registrarse")
 
+
+
+
+
+
+const trabajadores_LS = JSON.parse(localStorage.getItem("trabajadores"))
+const dni_LS = JSON.parse( localStorage.getItem("dnis"))
+
+let trabajadores = []
+let dni = []
+if (trabajadores !== null){
+    trabajadores = trabajadores_LS
+}
+if (dni !== null){
+    dni=dni_LS
+}
+for( const el of trabajadores){
+    console.log(el.contraseña)
+}
+
 //  INICIO DE SESION
+
 boton_IniciarSesion.addEventListener("click",(e)=>{
     e.preventDefault()
-    const bus= Trabajadores.filter((el)=> el.email == email1.value)
-    const b = bus.find((el)=>el.contraseña==contrasenia1.value)
+    let bus= trabajadores.filter((el)=> el.email == email1.value)
+    let b = bus.find((el)=>el.contraseña== contrasenia1.value)
     if(b){
         form_inicio.classList.add("formulario_iniciar")
     }else{
@@ -43,6 +67,17 @@ boton_registrarse.addEventListener("click",(e)=>{
     form_registro.classList.add ("formulario_registrarse")
 })
 
+
+
+
+
+
+
+
+
+
+
+
 // REGISTRARSE
 
 let boton_registro = form_registro.querySelector(".boton")
@@ -53,26 +88,29 @@ let contrasenia_registro = form_registro.querySelector("#campo_contrasenia2")
 
 let trabajador_nuevo = function (nombre,contrasenia,email,dni) {
     this.nombre=nombre,
-    this.contrasenia=contrasenia,
+    this.contraseña=contrasenia,
     this.email=email,
     this.dni=dni
 }
 boton_registro.addEventListener("click",(e)=>{
     e.preventDefault()
-    const busqueda = dni_contratados.filter((b)=>b.nombre.includes(nombre_registro.value))
+    const busqueda = dni.filter((b)=>b.nombre.includes(nombre_registro.value))
     const b =busqueda.find((b)=>b.dni === parseInt(dni_registro.value)) 
+
     if(b){
-        Trabajadores.push( new trabajador_nuevo (nombre_registro.value,contrasenia_registro.value,email_registro.value,dni_registro.value))
+        trabajadores.push( new trabajador_nuevo (nombre_registro.value,contrasenia_registro.value,email_registro.value,dni_registro.value))
+        localStorage.setItem("trabajadores",JSON.stringify(trabajadores))
+            let pos = dni.indexOf(b)
+            dni.splice(pos,1)
+            localStorage.setItem("dnis",JSON.stringify(dni))
             form_registro.classList.remove ("formulario_registrarse")
             form_registro.classList.add("formulario_registrarse-oculto")
             form_inicio.classList.remove("formulario_iniciar")
             form_inicio.classList.add("formulario_iniciar-activo")
-            let pos = dni_contratados.indexOf(b)
-            dni_contratados.splice(pos,1)
     } else{
         aviso_fallo.classList.remove("fallo_registro-oculto")
         aviso_fallo.classList.add("fallo_registro")
         form_registro.classList.remove ("formulario_registrarse")
         form_registro.classList.add("formulario_registrarse-oculto")
     }
-})
+}) 
