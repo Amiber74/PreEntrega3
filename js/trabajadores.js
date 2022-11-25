@@ -9,11 +9,6 @@ const dni_contratados=[
 localStorage.setItem("dnis",JSON.stringify(dni_contratados))
 
 
-//Storage
-
-
-
-// Eventos
 
     //formularios
 let form_inicio = document.querySelector(".formulario_iniciar-activo")
@@ -23,7 +18,7 @@ let form_registro = document.querySelector (".formulario_registrarse-oculto")
 let email1 = form_inicio.querySelector("#campo_email")
 let contrasenia1 = form_inicio.querySelector("#campo_contrasenia")
 let boton_IniciarSesion = form_inicio.querySelector(".boton")
-let boton_registrarse = form_inicio.querySelector (".boton_registrarse")
+let boton_registrarse = document.querySelector (".boton_registrarse")
 
 
 
@@ -36,7 +31,7 @@ const dni_LS = JSON.parse( localStorage.getItem("dnis"))
 let trabajadores = []
 let dni = []
 if (trabajadores !== null){
-    trabajadores = trabajadores_LS
+    trabajadores = trabajadores_LS || []
 }
 if (dni !== null){
     dni=dni_LS
